@@ -3,15 +3,15 @@ import LoginRoom from './components/LoginRoom';
 import GameRoom from './components/GameRoom';
 
 const App = () => {
-  const [roomId, setRoomId] = useState('');
+  const [room, setRoom] = useState<any>(null);
   const [playerName, setPlayerName] = useState('');
 
   return (
     <div className="App">
-      {!roomId ? (
-        <LoginRoom setRoomId={setRoomId} setPlayerName={setPlayerName} />
+      {!room ? (
+        <LoginRoom setRoom={setRoom} setPlayerName={setPlayerName} />
       ) : (
-        <GameRoom roomId={roomId} playerName={playerName} />
+        <GameRoom room={room} playerName={playerName} />
       )}
     </div>
   );
