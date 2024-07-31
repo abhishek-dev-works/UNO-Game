@@ -101,7 +101,7 @@
 }
 
 .table{
-  margin: 0 auto;
+  margin: 190px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,3 +121,8 @@
   justify-content: center;
 }
 
+.oppCard{
+ background-image: url('./assets/Card\ background.jpg');
+ background-size: contain;
+ background-repeat: no-repeat;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import socket from "../socket";
 import Cards from "./Cards";
 import "../App.css";
+import Opponent from "./Opponent";
 
 const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
   const [gameState, setGameState] = useState<any>(room.gameState);
@@ -62,6 +63,32 @@ const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
         <div className="stack">
           <Cards number="5" color="red" />
         </div>
+      </div>
+      <div>
+        <Opponent
+          name={"Abhishek"}
+          id={""}
+          cards={[1, 2, 3, 4, 5, 6]}
+          orientation={"vertical"}
+          isCurrentPlayer={false}
+          position={"left"}
+        />
+        <Opponent
+          name={"Aniket"}
+          id={""}
+          cards={[1, 2, 3, 4, 5, 6]}
+          orientation={"horizontal"}
+          isCurrentPlayer={false}
+          position={"top"}
+        />
+        <Opponent
+          name={"Hritik"}
+          id={""}
+          cards={[1, 2, 3, 4, 5, 6]}
+          orientation={"vertical"}
+          isCurrentPlayer={false}
+          position={"right"}
+        />
       </div>
       <div className="playerPortal">
         <div className="hand">
