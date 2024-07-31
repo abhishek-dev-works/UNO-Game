@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import socket from "../socket";
 import Cards from "./Cards";
+import "../App.css";
 
 const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
   const [gameState, setGameState] = useState<any>(room.gameState);
@@ -52,14 +53,29 @@ const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
     console.log(gameState);
   }, [gameState]);
 
-  return (<div>
-    <h3>Room ID: {room.roomId}</h3>
-    <div className="playerPortal">
-      <div className="hand">
-        <Cards number="5" color="red" />
+  return (
+    <div className="room">
+      <h3>Room ID: {room.roomId}</h3>
+
+      <div className="table">
+        <div className="deck">Deck</div>
+        <div className="stack">
+          <Cards number="5" color="red" />
+        </div>
+      </div>
+      <div className="playerPortal">
+        <div className="hand">
+          <Cards number="5" color="red" />
+          <Cards number="5" color="blue" />
+          <Cards number="5" color="red" />
+          <Cards number="5" color="blue" />
+          <Cards number="5" color="green" />
+          <Cards number="5" color="yellow" />
+          <Cards number="Draw 4+" color="" isWild />
+        </div>
       </div>
     </div>
-  </div>);
+  );
 };
 
 export default GameRoom;

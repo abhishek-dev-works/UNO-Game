@@ -1,29 +1,36 @@
 import React from "react";
+import WildBg from "../assets/WildBg.jpg";
 
-const Cards = ({ number, color, isWild }: { number: string; color: string; isWild?: boolean }) => {
+const Cards = ({
+  number,
+  color,
+  isWild,
+}: {
+  number: string;
+  color: string;
+  isWild?: boolean;
+}) => {
   return (
-    <button
-      style={{
-        width: 130,
-        height: 200,
-        border: "2px solid black",
-        backgroundColor: isWild ? 'black' : color,
-        textAlign: "justify",
-        fontSize: 80,
-      }}
-    >
-      <div>
-      <p
+    <div className="card" style={{ backgroundColor: isWild ? "black" : color }}>
+      <div
+        className="oval"
         style={{
-          marginBlockStart: "3.2rem",
-          textAlign: "center",
-          fontFamily: "fantasy",
+          backgroundImage: isWild ? `url(${WildBg})` : "",
+          backgroundSize: isWild ? "cover" : "",
+          backgroundColor: isWild ? "" : "white",
         }}
       >
-        {!isWild ? number: "WILD"}
-      </p>
+        <p
+          className="cardNum"
+          style={{
+            color: isWild ? "black" : color,
+            fontSize: isWild ? 30 : 80,
+          }}
+        >
+          {number}
+        </p>
       </div>
-    </button>
+    </div>
   );
 };
 

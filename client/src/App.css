@@ -1,15 +1,20 @@
 .App {
   text-align: center;
-  background: linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
-  color: whitesmoke
+  background: linear-gradient(
+    90deg,
+    hsla(221, 45%, 73%, 1) 0%,
+    hsla(220, 78%, 29%, 1) 100%
+  );
+  color: whitesmoke;
+  overflow: hidden;
 }
 
-.logo{
+.logo {
   max-width: 500px;
-  max-height: 500px;;
+  max-height: 500px;
 }
 
-.login{
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +33,7 @@
 }
 
 .btn {
-  background: #5DFDCB;
+  background: #5dfdcb;
   height: 35px;
   padding: 0px;
   width: 100px;
@@ -36,3 +41,83 @@
   border: 3px solid black;
   border-radius: 10px;
 }
+
+.oval {
+  width: 110px;
+  height: 150px;
+  background-color: white;
+  border-radius: 100% 50% 100% 50%; /* Tilts the oval 45 degrees to the right */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.hand {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card {
+  width: 130px;
+  height: 200px;
+  border: 5px solid black;
+  background-color: red;
+  text-align: justify;
+  display: flex;
+  align-items: center;
+  margin-left: -30px;
+  transition: all ease-in-out;
+  transition-delay: 300ms;
+}
+
+.cardNum {
+  margin-block-start: 3.2rem;
+  text-align: center;
+  font-family: fantasy;
+  color: blue;
+  margin-block-end: 2rem;
+  font-size: 80px;
+}
+
+.card:hover {
+  position: relative;
+  top: -14px;
+}
+
+.room {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.playerPortal {
+  width: 100vw;
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+}
+
+.table{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deck {
+  width: 130px;
+  height: 200px;
+  border: 5px solid black;
+  background-color: black;
+  color: white;
+  margin: 0 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 40px;
+  justify-content: center;
+}
+

@@ -17,7 +17,8 @@ const LoginRoom = ({
   const createRoom = () => {
     if (playerName) {
       socket.emit("createRoom", maxPlayers, playerName, (response: any) => {
-        setRoom(response.room);
+        debugger
+        setRoom(response.data);
         setPlayerName(playerName);
       });
     } else {
