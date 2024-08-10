@@ -5,13 +5,15 @@ const Cards = ({
   number,
   color,
   isWild,
+  onClick = () => {},
 }: {
   number: string;
   color: string;
   isWild?: boolean;
+  onClick?: (props: any) => any;
 }) => {
   return (
-    <div className="card" style={{ backgroundColor: isWild ? "black" : color }}>
+    <div className="card" style={{ backgroundColor: isWild ? "black" : color }} onClick={() =>onClick({color: color, value: number})}>
       <div
         className="oval"
         style={{
@@ -24,7 +26,7 @@ const Cards = ({
           className="cardNum"
           style={{
             color: isWild ? "black" : color,
-            fontSize: isWild ? 30 : 80,
+            fontSize: number.length > 1 ? 30 : 80,
           }}
         >
           {number}

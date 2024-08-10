@@ -7,11 +7,16 @@ import Opponent from "./Opponent";
 const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
   const [gameState, setGameState] = useState<any>(room.gameState);
   const [selectedCard, setSelectedCard] = useState<any>(null);
+  const [playerHand, setPlayerHand] = useState<any>(
+    room?.gameState?.players?.filter(
+      (player: { name: any; }) => player.name === playerName
+    )[0]?.hand ?? []
+  );
 
   useEffect(() => {
     socket.on("updateGameState", (response: any) => {
       console.log(response);
-      setGameState(response.room.gameState);
+      setGameState(response);
     });
 
     return () => {
@@ -19,8 +24,8 @@ const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
     };
   }, []);
 
-  const playCard = () => {
-    if (selectedCard) {
+  const playCard = (card: any) => {
+    if (card) {
       socket.emit(
         "playCard",
         room.roomId,
@@ -92,13 +97,22 @@ const GameRoom = ({ room, playerName }: { room: any; playerName: any }) => {
       </div>
       <div className="playerPortal">
         <div className="hand">
-          <Cards number="5" color="red" />
-          <Cards number="5" color="blue" />
-          <Cards number="5" color="red" />
-          <Cards number="5" color="blue" />
-          <Cards number="5" color="green" />
-          <Cards number="5" color="yellow" />
-          <Cards number="Draw 4+" color="" isWild />
+          {playerHand.map((card: any, index: any) => (
+            <Cards
+              key={index}
+              number={card.value}
+              color={card.color}
+              isWild={card.value === "wild"}
+              onClick={() => playCard(card)}
+            />
+          ))}
+          {/* <Cards number="5" color="red" onClick={playCard} />
+          <Cards number="5" color="blue" onClick={playCard} />
+          <Cards number="5" color="red" onClick={playCard} />
+          <Cards number="5" color="blue" onClick={playCard} />
+          <Cards number="5" color="green" onClick={playCard} />
+          <Cards number="5" color="yellow" onClick={playCard} />
+          <Cards number="Draw 4+" color="" isWild onClick={playCard} /> */}
         </div>
       </div>
     </div>

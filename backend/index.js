@@ -71,9 +71,9 @@ const createDeck = () => {
     "7",
     "8",
     "9",
-    "skip",
-    "reverse",
-    "draw2",
+    "Skip",
+    "Rev",
+    "Draw 2+",
   ];
   const deck = [];
   colors.forEach((color) => {
@@ -175,11 +175,7 @@ io.on("connection", (socket) => {
             players: room.players,
           };
           io.in(roomId).emit("updateGameState", room.gameState);
-          callback({
-            success: true,
-            message: "Card played",
-            gameState: room.gameState,
-          });
+          callback(formatResponse(true, room));
         } else {
           callback({ success: false, message: "Card not playable" });
         }
